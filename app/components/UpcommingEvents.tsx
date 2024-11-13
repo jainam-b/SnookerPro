@@ -91,13 +91,13 @@ export default function UpcomingEvents() {
             >
               <Card className="bg-gray-800 text-white h-full overflow-hidden">
                 <CardHeader className="relative pb-0">
-                  <Badge variant="secondary" className="absolute top-4 left-4 bg-green-500 text-white">
+                  <Badge variant="secondary" className="absolute top-4 left-4 bg-red-500 text-white">
                     Quarter Final
                   </Badge>
                   <div className="flex justify-between items-center mt-8">
                     <PlayerInfo player={event.player1} />
                     <div className="text-center">
-                      <CardTitle className="text-xl sm:text-2xl mb-2 text-green-400">VS</CardTitle>
+                      <CardTitle className="text-xl sm:text-2xl mb-2 text-red-400">VS</CardTitle>
                       <p className="text-base sm:text-lg font-semibold">{event.time}</p>
                       <p className="text-xs sm:text-sm text-gray-400">{event.date}</p>
                     </div>
@@ -107,11 +107,11 @@ export default function UpcomingEvents() {
                 <CardContent className="pt-4">
                   <div className="flex justify-center items-center space-x-4 text-xs sm:text-sm text-gray-300">
                     <div className="flex items-center">
-                      <MapPin className="mr-1 h-4 w-4 text-green-500" />
+                      <MapPin className="mr-1 h-4 w-4 text-red-500" />
                       <span>Crucible Theatre, Sheffield</span>
                     </div>
                     <div className="flex items-center">
-                      <CalendarDays className="mr-1 h-4 w-4 text-green-500" />
+                      <CalendarDays className="mr-1 h-4 w-4 text-red-500" />
                       <span>Apr 20 - May 6</span>
                     </div>
                   </div>
@@ -132,7 +132,7 @@ export default function UpcomingEvents() {
             <Button
               variant="outline"
               size="icon"
-              className="hidden md:flex items-center justify-center absolute left-2 top-1/2 -translate-y-1/2 bg-green-500 text-white hover:bg-green-600 w-10 h-10"
+              className="hidden md:flex items-center justify-center absolute left-2 top-1/2 -translate-y-1/2 bg-red-500 text-white hover:bg-red-600 w-10 h-10"
               onClick={scrollPrev}
             >
               <ChevronLeft className="h-6 w-6" />
@@ -151,7 +151,7 @@ export default function UpcomingEvents() {
             <Button
               variant="outline"
               size="icon"
-              className="hidden md:flex items-center justify-center absolute right-2 top-1/2 -translate-y-1/2 bg-green-500 text-white hover:bg-green-600 w-10 h-10"
+              className="hidden md:flex items-center justify-center absolute right-2 top-1/2 -translate-y-1/2 bg-red-500 text-white hover:bg-red-600 w-10 h-10"
               onClick={scrollNext}
             >
               <ChevronRight className="h-6 w-6" />
@@ -163,7 +163,7 @@ export default function UpcomingEvents() {
         {events.map((_, index) => (
           <motion.div
             key={index}
-            className={`w-2 h-2 rounded-full ${index === currentIndex ? 'bg-green-500' : 'bg-gray-500'}`}
+            className={`w-2 h-2 rounded-full ${index === currentIndex ? 'bg-red-500' : 'bg-gray-500'}`}
             initial={false}
             animate={{ scale: index === currentIndex ? 1.5 : 1 }}
             transition={{ duration: 0.3 }}
@@ -186,7 +186,7 @@ function PlayerInfo({ player }: { player: Player }) {
       <motion.img
         whileHover={{ scale: 1.1 }}
         alt={player.name}
-        className="rounded-full w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-2 border-2 border-green-500"
+        className="rounded-full w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-2 border-2 border-red-500"
         height="96"
         src={player.image}
         style={{

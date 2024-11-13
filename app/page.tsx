@@ -44,7 +44,7 @@ export default function Home() {
         >
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
             World Snooker
-            <span className="block text-green-500 mt-2">Championship 2024</span>
+            <span className="block text-red-500 mt-2">Championship 2024</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
@@ -57,11 +57,11 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              className="group relative overflow-hidden bg-green-600 text-white px-8 py-4 rounded-lg flex items-center justify-center space-x-2 hover:bg-green-700 transition-all duration-300"
+              className="group relative overflow-hidden bg-red-600 text-white px-8 py-4 rounded-lg flex items-center justify-center space-x-2 hover:bg-red-700 transition-all duration-300"
             >
               <Play className="w-6 h-6" />
               <span className="text-lg font-semibold">Watch Live</span>
-              <div className={`absolute inset-0 bg-green-500/20 transition-transform duration-300 ease-out ${isHovered ? 'translate-x-0' : '-translate-x-full'}`}></div>
+              <div className={`absolute inset-0 bg-red-500/20 transition-transform duration-300 ease-out ${isHovered ? 'translate-x-0' : '-translate-x-full'}`}></div>
             </motion.button>
 
             <motion.button
@@ -93,9 +93,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-gray-400">&copy; 2024 World Snooker Championship. All rights reserved.</p>
           <div className="mt-4 space-x-4">
-            <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">Terms of Service</a>
-            <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">Contact Us</a>
+            <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">Privacy Policy</a>
+            <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">Terms of Service</a>
+            <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">Contact Us</a>
           </div>
         </div>
       </footer>

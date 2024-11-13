@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center space-x-8">
             <div className="flex-shrink-0 font-bold text-2xl tracking-tighter">
-              SNOOKER<span className="text-green-500">PRO</span>
+              SNOOKER<span className="text-red-500">PRO</span>
             </div>
             
             <div className="hidden md:flex space-x-8">
@@ -21,23 +21,23 @@ export default function Navbar() {
                   href={`#${item.toLowerCase()}`}
                   className="relative group"
                 >
-                  <span className="relative z-10 hover:text-green-500 transition-colors duration-200">
+                  <span className="relative z-10 hover:text-red-500 transition-colors duration-200">
                     {item}
                   </span>
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
                 </a>
               ))}
             </div>
           </div>
 
           <div className="hidden md:flex items-center space-x-6">
-            <button className="hover:text-green-500 transition-colors duration-200">
+            <button className="hover:text-red-500 transition-colors duration-200">
               <Search className="w-5 h-5" />
             </button>
-            <button className="hover:text-green-500 transition-colors duration-200">
+            <button className="hover:text-red-500 transition-colors duration-200">
               <User className="w-5 h-5" />
             </button>
-            <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200">
+            <button className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200">
               Sign In
             </button>
           </div>

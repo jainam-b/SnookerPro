@@ -45,7 +45,7 @@ export default function RecentMatchHighlight() {
     <section className="py-8 md:py-16 bg-black/40 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-2 mb-6 md:mb-8">
-          <Trophy className="w-5 h-5 md:w-6 md:h-6 text-green-500" />
+          <Trophy className="w-5 h-5 md:w-6 md:h-6 text-red-500" />
           <h2 className="text-2xl md:text-3xl font-bold">Recent Match Highlight</h2>
         </div>
 
@@ -61,7 +61,7 @@ export default function RecentMatchHighlight() {
           {/* Mobile: Full width, Desktop: Center column */}
           <div className="bg-white/5 backdrop-blur-sm rounded-xl md:rounded-2xl border border-white/10 p-4 md:p-8 space-y-4 md:space-y-6 mb-6 md:mb-0">
             <div className="text-center mb-4 md:mb-8">
-              <div className="text-green-500 font-medium">{matchStats.tournament}</div>
+              <div className="text-red-500 font-medium">{matchStats.tournament}</div>
               <div className="text-xs md:text-sm text-gray-400">{matchStats.round}</div>
             </div>
 
@@ -93,17 +93,17 @@ function PlayerInfo({ player, reverse = false }: PlayerInfoProps) {
   return (
     <div className={`text-center space-y-3 md:space-y-4 ${reverse ? 'md:order-last' : ''}`}>
       <div className="relative w-32 h-32 md:w-48 md:h-48 mx-auto">
-        <div className={`absolute inset-0 bg-gradient-to-${reverse ? 'bl' : 'br'} from-green-500/20 to-transparent rounded-full animate-pulse`}></div>
+        <div className={`absolute inset-0 bg-gradient-to-${reverse ? 'bl' : 'br'} from-red-500/20 to-transparent rounded-full animate-pulse`}></div>
         <Image
           src={player.image}
           alt={`${player.name}'s photo`}
           width={192}
           height={192}
-          className="w-full h-full object-cover rounded-full border-4 border-green-500"
+          className="w-full h-full object-cover rounded-full border-4 border-red-500"
         />
       </div>
       <h3 className="text-lg md:text-2xl font-bold">{player.name}</h3>
-      <div className="text-3xl md:text-5xl font-bold text-green-500">{player.score}</div>
+      <div className="text-3xl md:text-5xl font-bold text-red-500">{player.score}</div>
     </div>
   )
 }

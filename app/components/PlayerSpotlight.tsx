@@ -31,7 +31,7 @@ export default function PlayerSpotlight() {
     <section className="py-16 bg-black/40 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-2 mb-8">
-          <Star className="w-6 h-6 text-green-500" />
+          <Star className="w-6 h-6 text-red-500" />
           <h2 className="text-3xl font-bold">Player Spotlight</h2>
         </div>
         
@@ -52,15 +52,15 @@ export default function PlayerSpotlight() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
                 <div className="absolute bottom-0 p-6 space-y-3">
                   <h3 className="text-2xl font-bold">{player.name}</h3>
-                  <p className="text-green-500 font-medium">{player.nickname}</p>
+                  <p className="text-red-500 font-medium">{player.nickname}</p>
                   
                   <div className="grid grid-cols-2 gap-4 pt-2">
                     <div className="flex items-center gap-2">
-                      <Trophy className="w-5 h-5 text-green-500" />
+                      <Trophy className="w-5 h-5 text-red-500" />
                       <span>{player.titles} Titles</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Award className="w-5 h-5 text-green-500" />
+                      <Award className="w-5 h-5 text-red-500" />
                       <span>Rank #{player.ranking}</span>
                     </div>
                   </div>

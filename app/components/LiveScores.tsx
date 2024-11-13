@@ -24,7 +24,7 @@ export default function LiveScores() {
   return (
     <div className="bg-white rounded-lg shadow-md p-4">
       <div className="flex items-center space-x-2 mb-4">
-        <Timer className="w-5 h-5 text-green-600" />
+        <Timer className="w-5 h-5 text-red-600" />
         <h2 className="text-xl font-bold">Live Matches</h2>
       </div>
       <div className="space-y-4">
