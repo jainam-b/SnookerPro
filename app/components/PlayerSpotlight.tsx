@@ -4,25 +4,26 @@ import { Star, Award, Trophy } from 'lucide-react';
 const players = [
   {
     name: "Ronnie O'Sullivan",
-    image: "https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&q=80",
+    image: "https://img.gc.wstservices.co.uk/fit-in/400x600/a51dead0-9c1d-11ee-a781-83e0e6ce5afb.png",
     titles: 39,
     ranking: 1,
     nickname: "The Rocket"
   },
   {
     name: "Judd Trump",
-    image: "https://images.unsplash.com/photo-1511933617088-859b414f00ae?auto=format&fit=crop&q=80",
+    image: "https://img.gc.wstservices.co.uk/fit-in/400x600/7af59cf0-588b-11ef-8896-f9bd1bf1a8a7.png",
     titles: 23,
     ranking: 2,
     nickname: "The Ace"
   },
   {
     name: "Mark Selby",
-    image: "https://images.unsplash.com/photo-1519160558534-579f5106e43f?auto=format&fit=crop&q=80",
+    image: "https://img.gc.wstservices.co.uk/fit-in/400x600/5059a5c0-9c3b-11ee-aead-69bae4cf59d3.png",
     titles: 20,
     ranking: 3,
     nickname: "The Jester"
-  }
+  },
+
 ];
 
 export default function PlayerSpotlight() {

@@ -1,11 +1,29 @@
-import React from 'react';
-import { Trophy, Award, Target } from 'lucide-react';
+import React from 'react'
+import { Trophy } from 'lucide-react'
+import Image from 'next/image'
+
+// Define match stats type
+interface Player {
+  name: string
+  image: string
+  score: number
+  highestBreak: number
+  centuries: number
+  potSuccess: string
+}
+
+interface MatchStats {
+  player1: Player
+  player2: Player
+  tournament: string
+  round: string
+}
 
 export default function RecentMatchHighlight() {
-  const matchStats = {
+  const matchStats: MatchStats = {
     player1: {
       name: "Ronnie O'Sullivan",
-      image: "https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&q=80",
+      image: "https://img.gc.wstservices.co.uk/fit-in/400x600/7af59cf0-588b-11ef-8896-f9bd1bf1a8a7.png",
       score: 6,
       highestBreak: 147,
       centuries: 3,
@@ -13,7 +31,7 @@ export default function RecentMatchHighlight() {
     },
     player2: {
       name: "Judd Trump",
-      image: "https://images.unsplash.com/photo-1511933617088-859b414f00ae?auto=format&fit=crop&q=80",
+      image: "https://img.gc.wstservices.co.uk/fit-in/400x600/a51dead0-9c1d-11ee-a781-83e0e6ce5afb.png",
       score: 4,
       highestBreak: 137,
       centuries: 2,
@@ -21,80 +39,87 @@ export default function RecentMatchHighlight() {
     },
     tournament: "Masters 2024",
     round: "Semi-Final"
-  };
+  }
 
   return (
-    <section className="py-16 bg-black/40 backdrop-blur-sm">
+    <section className="py-8 md:py-16 bg-black/40 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center gap-2 mb-8">
-          <Trophy className="w-6 h-6 text-green-500" />
-          <h2 className="text-3xl font-bold">Recent Match Highlight</h2>
+        <div className="flex items-center gap-2 mb-6 md:mb-8">
+          <Trophy className="w-5 h-5 md:w-6 md:h-6 text-green-500" />
+          <h2 className="text-2xl md:text-3xl font-bold">Recent Match Highlight</h2>
         </div>
 
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-            {/* Player 1 */}
-            <div className="text-center space-y-4">
-              <div className="relative w-48 h-48 mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent rounded-full animate-pulse"></div>
-                <img
-                  src={matchStats.player1.image}
-                  alt={matchStats.player1.name}
-                  className="w-full h-full object-cover rounded-full border-4 border-green-500"
-                />
-              </div>
-              <h3 className="text-2xl font-bold">{matchStats.player1.name}</h3>
-              <div className="text-5xl font-bold text-green-500">{matchStats.player1.score}</div>
+        <div className="md:grid md:grid-cols-3 md:gap-8 items-center">
+          {/* Mobile: Player images side by side, Desktop: Player 1 */}
+          <div className="flex justify-between md:block mb-6 md:mb-0">
+            <PlayerInfo player={matchStats.player1} />
+            <div className='block md:hidden'>
+              <PlayerInfo player={matchStats.player2} /> 
+            </div>
+          </div>
+
+          {/* Mobile: Full width, Desktop: Center column */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl md:rounded-2xl border border-white/10 p-4 md:p-8 space-y-4 md:space-y-6 mb-6 md:mb-0">
+            <div className="text-center mb-4 md:mb-8">
+              <div className="text-green-500 font-medium">{matchStats.tournament}</div>
+              <div className="text-xs md:text-sm text-gray-400">{matchStats.round}</div>
             </div>
 
-            {/* Match Stats */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 space-y-6">
-              <div className="text-center mb-8">
-                <div className="text-green-500 font-medium">{matchStats.tournament}</div>
-                <div className="text-sm text-gray-400">{matchStats.round}</div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold">{matchStats.player1.highestBreak}</span>
-                  <span className="text-sm text-gray-400">Highest Break</span>
-                  <span className="text-2xl font-bold">{matchStats.player2.highestBreak}</span>
-                </div>
-
-                <div className="h-px bg-white/10"></div>
-
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold">{matchStats.player1.centuries}</span>
-                  <span className="text-sm text-gray-400">Century Breaks</span>
-                  <span className="text-2xl font-bold">{matchStats.player2.centuries}</span>
-                </div>
-
-                <div className="h-px bg-white/10"></div>
-
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold">{matchStats.player1.potSuccess}</span>
-                  <span className="text-sm text-gray-400">Pot Success</span>
-                  <span className="text-2xl font-bold">{matchStats.player2.potSuccess}</span>
-                </div>
-              </div>
+            <div className="space-y-3 md:space-y-4">
+              <StatRow label="Highest Break" value1={matchStats.player1.highestBreak} value2={matchStats.player2.highestBreak} />
+              <div className="h-px bg-white/10"></div>
+              <StatRow label="Century Breaks" value1={matchStats.player1.centuries} value2={matchStats.player2.centuries} />
+              <div className="h-px bg-white/10"></div>
+              <StatRow label="Pot Success" value1={matchStats.player1.potSuccess} value2={matchStats.player2.potSuccess} />
             </div>
+          </div>
 
-            {/* Player 2 */}
-            <div className="text-center space-y-4">
-              <div className="relative w-48 h-48 mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-bl from-green-500/20 to-transparent rounded-full animate-pulse"></div>
-                <img
-                  src={matchStats.player2.image}
-                  alt={matchStats.player2.name}
-                  className="w-full h-full object-cover rounded-full border-4 border-green-500"
-                />
-              </div>
-              <h3 className="text-2xl font-bold">{matchStats.player2.name}</h3>
-              <div className="text-5xl font-bold text-green-500">{matchStats.player2.score}</div>
-            </div>
+          {/* Mobile: Included in top flex container, Desktop: Player 2 */}
+          <div className="hidden md:block">
+            <PlayerInfo player={matchStats.player2} reverse />
           </div>
         </div>
       </div>
     </section>
-  );
+  )
+}
+
+interface PlayerInfoProps {
+  player: Player
+  reverse?: boolean
+}
+
+function PlayerInfo({ player, reverse = false }: PlayerInfoProps) {
+  return (
+    <div className={`text-center space-y-3 md:space-y-4 ${reverse ? 'md:order-last' : ''}`}>
+      <div className="relative w-32 h-32 md:w-48 md:h-48 mx-auto">
+        <div className={`absolute inset-0 bg-gradient-to-${reverse ? 'bl' : 'br'} from-green-500/20 to-transparent rounded-full animate-pulse`}></div>
+        <Image
+          src={player.image}
+          alt={`${player.name}'s photo`}
+          width={192}
+          height={192}
+          className="w-full h-full object-cover rounded-full border-4 border-green-500"
+        />
+      </div>
+      <h3 className="text-lg md:text-2xl font-bold">{player.name}</h3>
+      <div className="text-3xl md:text-5xl font-bold text-green-500">{player.score}</div>
+    </div>
+  )
+}
+
+interface StatRowProps {
+  label: string
+  value1: number | string
+  value2: number | string
+}
+
+function StatRow({ label, value1, value2 }: StatRowProps) {
+  return (
+    <div className="flex justify-between items-center">
+      <span className="text-lg md:text-2xl font-bold">{value1}</span>
+      <span className="text-xs md:text-sm text-gray-400">{label}</span>
+      <span className="text-lg md:text-2xl font-bold">{value2}</span>
+    </div>
+  )
 }
