@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star, Award, Trophy } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const players = [
   {
@@ -37,6 +38,14 @@ export default function PlayerSpotlight() {
         
         <div className="grid md:grid-cols-3 gap-8">
           {players.map((player, index) => (
+            <motion.div
+            key={player.name}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.4 }}
+            
+          >
             <div 
               key={index}
               className="group relative overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 transition-transform duration-300 hover:-translate-y-2"
@@ -67,6 +76,7 @@ export default function PlayerSpotlight() {
                 </div>
               </div>
             </div>
+            </motion.div>
           ))}
         </div>
       </div>
